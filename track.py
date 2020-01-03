@@ -16,10 +16,11 @@ tokenKey = os.getenv('Token')
 
 inputOK = True
 
+#input for tracking number
 while inputOK:
     #asking for the tracking number
-    #barcode = input('Traking Number: ')
-    barcode = 'EF582568151TH'
+    barcode = input('Traking Number: ')
+    #barcode = 'EF582568151TH'
     if len(barcode) == 13:
         inputOK = False
     else:
@@ -42,7 +43,7 @@ headers    = {'Content-Type': 'application/json',
 responseToken = requests.post(tokenAddress, headers=headers, verify=False, timeout=300)
 
 
-# POST results for token
+#POST results for token
 resultsToken = responseToken.json()
 getToken = resultsToken['token']
 #print(getToken)
@@ -59,14 +60,12 @@ body  = {   "status": "all",
 
 #POST to HTTP Address to track package
 response = requests.post(trackAddress, headers=headers, data=json.dumps(body), verify=False)
-#print(response.status_code)
 
 results = response.json()
-#print(results)
 
-#print(results['response']['items'][barcode][0])
 line = results['response']['items'][barcode]
 
+#output result
 for i in range(len(line)):
     for key,val in line[i].items():
         print(key,':',val)
