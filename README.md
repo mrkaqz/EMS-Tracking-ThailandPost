@@ -11,4 +11,4 @@ create .env file with following content
 Token=[Your token key]
 ```
 
-Reqiuest token key from https://track.thailandpost.co.th/dashboard
+Request token key from https://track.thailandpost.co.th/dashboard
